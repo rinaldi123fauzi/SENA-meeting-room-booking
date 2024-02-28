@@ -6,20 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Building extends Model
+class Role extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'name',
-        'address',
-        'city',
-        'provice',
-        'postal_code',
     ];
 
-    public function rooms() 
+    public function users()
     {
-        return $this->hasMany(Room::class, 'building_id', 'id');
+        return $this->hasMany(User::class, 'role_id', 'id');
     }
 }

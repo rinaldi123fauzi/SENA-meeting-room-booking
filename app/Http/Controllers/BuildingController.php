@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\RoomRequest;
+use App\Http\Requests\BuildingRequest;
 use App\Models\Building;
-use App\Models\Room;
 use Illuminate\Http\Request;
 
-class RoomController extends Controller
+class BuildingController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -22,17 +21,16 @@ class RoomController extends Controller
      */
     public function create()
     {
-        $buildings = Building::all();
-        return view('pages.admin.room.create', compact('buildings'));
+        return view('pages.admin.building.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(RoomRequest $request)
+    public function store(BuildingRequest $request)
     {
         $data = $request->all();
-        Room::create($data);
+        Building::create($data);
         return redirect()->route('admin');
     }
 
@@ -49,29 +47,27 @@ class RoomController extends Controller
      */
     public function edit(string $id)
     {
-        $room = Room::with('building')->findOrFail($id);
-        $buildings = Building::all();
-        return view('pages.admin.room.edit', compact('room', 'buildings'));
+        $building = Building::findOrFail($id);
+        return view('pages.admin.building.edit', compact('building'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(RoomRequest $request, string $id)
+    public function update(BuildingRequest $request, string $id)
     {
         $data = $request->all();
-        $room = Room::findOrFail($id);
-        $room->update($data);
+        $building = Building::findOrFail($id);
+        $building->update($data);
         return redirect()->route('admin');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Building $building)
     {
-        $room = Room::findOrFail($id);
-        $room->delete();
+        $building->delete();
         return redirect()->route('admin');
     }
 }

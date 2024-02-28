@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('roles')->default('USER')->after('email');
+        Schema::create('maps', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('building_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->string('image_url');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -21,8 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('roles');
-        });
+        Schema::dropIfExists('maps');
     }
 };

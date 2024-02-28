@@ -6,20 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Building extends Model
+class OfficeLayout extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'name',
-        'address',
-        'city',
-        'provice',
-        'postal_code',
+        'map_id',
+        'location',
+        'user_name',
+        'department',
     ];
 
-    public function rooms() 
+    public function maps()
     {
-        return $this->hasMany(Room::class, 'building_id', 'id');
+        return $this->belongsTo(Map::class, 'map_id', 'id');
     }
 }
