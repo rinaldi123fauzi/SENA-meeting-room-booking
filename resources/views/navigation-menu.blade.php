@@ -15,6 +15,12 @@
 										<x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
 												{{ __('Dashboard') }}
 										</x-nav-link>
+										<x-nav-link href="{{ route('bookings.index') }}" :active="request()->routeIs('bookings.index')">
+												{{ __('Book a meeting room') }}
+										</x-nav-link>
+										<x-nav-link href="{{ route('office-layouts.index') }}" :active="request()->routeIs('office-layouts.index')">
+												{{ __('Office layouts') }}
+										</x-nav-link>
 										@if (Auth::user()->role_id == '1')
 												<x-nav-link href="{{ route('admin') }}" :active="request()->routeIs('admin')">
 														{{ __('Administrator') }}
@@ -110,10 +116,6 @@
 																{{ __('Manage Account') }}
 														</div>
 
-														<x-dropdown-link href="{{ route('profile.show') }}">
-																{{ __('Profile') }}
-														</x-dropdown-link>
-
 														@if (Laravel\Jetstream\Jetstream::hasApiFeatures())
 																<x-dropdown-link href="{{ route('api-tokens.index') }}">
 																		{{ __('API Tokens') }}
@@ -181,9 +183,6 @@
 
 						<div class="mt-3 space-y-1">
 								<!-- Account Management -->
-								<x-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-										{{ __('Profile') }}
-								</x-responsive-nav-link>
 
 								@if (Laravel\Jetstream\Jetstream::hasApiFeatures())
 										<x-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">

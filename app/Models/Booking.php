@@ -15,13 +15,20 @@ class Booking extends Model
         'room_id',
         'booked_by',
         'email',
-        'description',
+        'meeting_description',
+        'status',
         'start_time',
         'end_time',
     ];
 
-    public function users() 
+    public function user() 
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function room() 
+    {
+        return $this->belongsTo(Room::class, 'room_id', 'id');
+    }
+
 }

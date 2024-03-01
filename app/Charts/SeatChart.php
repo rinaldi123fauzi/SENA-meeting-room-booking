@@ -2,6 +2,8 @@
 
 namespace App\Charts;
 
+use App\Models\Building;
+use App\Models\OfficeLayout;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 
 class SeatChart
@@ -15,9 +17,15 @@ class SeatChart
 
     public function build(): \ArielMejiaDev\LarapexCharts\PieChart
     {
+        $buildings = Building::all();
+        $capacity = $buildings->sum('capacity');
+
+        $seats = OfficeLayout::all();
+        $seatAvailable = $capacity - $seats->count() ;
+
         return $this->chart->pieChart()
             ->setTitle('Office Capacity')
-            ->addData([40, 60])
+            ->addData([$seatAvailable, $capacity - $seatAvailable])
             ->setLabels(['Empty seat', 'Seat occupied']);
     }
 }

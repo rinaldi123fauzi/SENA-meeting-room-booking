@@ -1,7 +1,7 @@
 <x-app-layout>
 		<x-slot name="header">
 				<h2 class="text-xl font-semibold leading-tight text-gray-800">
-						{{ __('Edit meeting room') }}
+						{{ __('Add user seat') }}
 				</h2>
 		</x-slot>
 
@@ -24,33 +24,28 @@
 								</div>
 						@endif
 						<div class="overflow-hidden bg-white p-5 shadow-xl sm:rounded-lg">
-								<form action="{{ route('rooms.update', $room->id) }}" method="post">
+								<img src="{{ Storage::url($map->image_url) }}" alt="">
+								<form action="{{ route('office-layouts.seat.store') }}" method="post">
 										@csrf
-										@method('PUT')
 										<div class="mx-auto my-3 flex w-11/12 flex-col">
-												<label for="building_id">Select building</label>
-												<select name="building_id" id="building_id" class="my-1 rounded-md">
-														<option value="{{ $room->building->id }}">{{ $room->building->name }}</option>
-														<option value="" disabled>---</option>
-														@foreach ($buildings as $building)
-																<option value="{{ $building->id }}">{{ $building->name }}</option>
-														@endforeach
-												</select>
+												<label for="map_id">Map name</label>
+												<input type="text" name="map_id" id="map_id" placeholder=""
+														class="my-1 rounded-md read-only:border-0 read-only:bg-slate-200 read-only:ring-0"
+														value="{{ $map->id }} " readonly>
 										</div>
 										<div class="mx-auto my-3 flex w-11/12 flex-col">
-												<label for="name">Room name</label>
-												<input type="text" name="name" id="name" placeholder="Enter room name" class="my-1 rounded-md"
-														value="{{ $room->name }}">
+												<label for="location">Seat location</label>
+												<input type="text" name="location" id="location" placeholder="Enter seat location"
+														class="my-1 rounded-md">
 										</div>
 										<div class="mx-auto my-3 flex w-11/12 flex-col">
-												<label for="description">description</label>
-												<input type="text" name="description" id="description" placeholder="Enter description"
-														class="my-1 rounded-md" value="{{ $room->description }}">
+												<label for="user_name">User name</label>
+												<input type="text" name="user_name" id="user_name" placeholder="Enter user name" class="my-1 rounded-md">
 										</div>
 										<div class="mx-auto my-3 flex w-11/12 flex-col">
-												<label for="capacity">Capacity</label>
-												<input type="text" name="capacity" id="capacity" placeholder="Enter capacity" class="my-1 rounded-md"
-														value="{{ $room->capacity }}">
+												<label for="department">Department</label>
+												<input type="text" name="department" id="department" placeholder="Enter department"
+														class="my-1 rounded-md">
 										</div>
 										<div class="mr-12 text-right">
 												<button

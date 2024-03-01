@@ -23,7 +23,6 @@ class OfficeLayoutRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'office_id' => 'required|integer',
             'map_id' => 'required|integer',
             'location' => 'required|string|max:255',
             'user_name' => 'required|string|max:255',

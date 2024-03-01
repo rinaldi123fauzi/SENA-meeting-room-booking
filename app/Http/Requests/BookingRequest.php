@@ -27,6 +27,8 @@ class BookingRequest extends FormRequest
             'room_id' => 'required|integer',
             'booked_by' => 'required|string|max:255',
             'email' => 'required|email',
+            'meeting_description' => 'required|string|max:255',
+            'status' => 'required|in:BOOKED,CANCELED',
             'start_time' => 'required|date',
             'end_time' => 'required|date',
         ];

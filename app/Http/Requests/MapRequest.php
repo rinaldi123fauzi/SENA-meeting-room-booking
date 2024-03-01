@@ -12,7 +12,7 @@ class MapRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return Auth::check();
+        return Auth::check() && Auth::user()->role_id == 1;
     }
 
     /**
@@ -23,8 +23,8 @@ class MapRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'office_id' => 'required|integer',
-            'image_url' => 'required|string',
+            'building_id' => 'required|integer',
+            'image_url' => 'required|image|mimes:gif,png,jpeg,jpg,svg|max:2048',
         ];
     }
 }

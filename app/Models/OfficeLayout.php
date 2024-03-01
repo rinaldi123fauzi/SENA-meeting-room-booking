@@ -17,7 +17,7 @@ class OfficeLayout extends Model
         'department',
     ];
 
-    public function maps()
+    public function office_map()
     {
         return $this->belongsTo(Map::class, 'map_id', 'id');
     }
