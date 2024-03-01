@@ -1,7 +1,7 @@
 <x-app-layout>
 		<x-slot name="header">
-				<h2 class="text-xl font-semibold leading-tight text-gray-800">
-						{{ __('Select a room') }}
+				<h2 class="text-base font-semibold leading-tight text-gray-800 lg:text-xl">
+						<a href="{{ route('bookings.index') }}">Book a room &rsaquo;</a> {{ __('Select a room') }}
 				</h2>
 		</x-slot>
 
@@ -9,7 +9,7 @@
 				<div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
 						<div class="overflow-hidden bg-white p-5 shadow-xl sm:rounded-lg">
 								<h3 class="mb-3 text-xl font-semibold text-gray-800">Available rooms</h3>
-								<div class="grid grid-cols-3 gap-3">
+								<div class="grid grid-cols-2 gap-3 lg:grid-cols-3">
 										@foreach ($availableRooms as $availableRoom)
 												<div class="flex w-full flex-col gap-3 rounded-md border border-primary p-5">
 														<h5 class="text-lg font-semibold">{{ $availableRoom->name }}</h5>
@@ -33,7 +33,7 @@
 
 								@if ($unavailableRooms)
 										<h3 class="mb-3 mt-10 text-xl font-semibold text-gray-800">Unavailable rooms</h3>
-										<div class="grid grid-cols-3 gap-3">
+										<div class="grid grid-cols-2 gap-3 lg:grid-cols-3">
 												@foreach ($unavailableRooms as $unavailableRoom)
 														@foreach ($unavailableRoom->bookings as $booking)
 																<div class="flex w-full flex-col gap-3 rounded-md border border-red-500 p-5">

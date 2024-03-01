@@ -1,7 +1,7 @@
 <x-app-layout>
 		<x-slot name="header">
-				<h2 class="text-xl font-semibold leading-tight text-gray-800">
-						{{ __('Add building') }}
+				<h2 class="text-base font-semibold leading-tight text-gray-800 lg:text-xl">
+						<a href="{{ route('admin') }}">Admin panel &rsaquo;</a> {{ __('Add building') }}
 				</h2>
 		</x-slot>
 
@@ -49,7 +49,7 @@
 												<input type="number" name="postal_code" id="postal_code" placeholder="Enter postal code"
 														class="my-1 rounded-md">
 										</div>
-										<div class="mr-12 text-right">
+										<div class="mr-4 text-right lg:mr-12">
 												<button
 														class="mr-auto rounded-md bg-primary px-4 py-2 text-white transition duration-300 hover:bg-blue-900">Save</button>
 										</div>

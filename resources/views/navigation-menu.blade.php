@@ -158,6 +158,12 @@
 						<x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
 								{{ __('Dashboard') }}
 						</x-responsive-nav-link>
+						<x-responsive-nav-link href="{{ route('bookings.index') }}" :active="request()->routeIs('bookings.index')">
+								{{ __('Book a meeting room') }}
+						</x-responsive-nav-link>
+						<x-responsive-nav-link href="{{ route('office-layouts.index') }}" :active="request()->routeIs('office-layouts.index')">
+								{{ __('Office layouts') }}
+						</x-responsive-nav-link>
 						@if (Auth::user()->role_id == 1)
 								<x-responsive-nav-link href="{{ route('admin') }}" :active="request()->routeIs('admin')">
 										{{ __('Administrator') }}

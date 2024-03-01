@@ -1,7 +1,7 @@
 <x-app-layout>
 		<x-slot name="header">
-				<h2 class="text-xl font-semibold leading-tight text-gray-800">
-						{{ __('Office layout') }}
+				<h2 class="text-base font-semibold leading-tight text-gray-800 lg:text-xl">
+						<a href="{{ route('office-layouts.index') }}">Office layouts &rsaquo;</a> {{ $map->name }}
 				</h2>
 		</x-slot>
 
@@ -10,26 +10,21 @@
 						<div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
 								<div class="flex flex-col gap-3 p-5">
 										<div class="w-full p-5">
-												@foreach ($maps as $map)
-														<div class="mt-12 flex flex-col">
-																<img src="{{ Storage::url($map->image_url) }}" alt="" class="w-full object-cover">
-																<div class="mx-5 flex flex-col gap-1">
-																		<p class="">{{ $map->name }}</p>
-																		<p class="">Gedung Depan</p>
-																</div>
+												<div class="mt-12 flex flex-col">
+														<img src="{{ Storage::url($map->image_url) }}" alt="" class="w-full object-cover">
+														<div class="mx-0 flex flex-col gap-1 lg:mx-5">
+																<p class="text-sm lg:text-base">{{ $map->name }}</p>
+																<p class="text-sm lg:text-base">Gedung Depan</p>
 														</div>
-												@endforeach
+												</div>
 										</div>
 										<div>
-												<div class="my-10 overflow-x-auto py-3">
+												<div class="overflow-x-auto py-3 lg:my-10">
 														<div class="inline-block min-w-full p-1.5 align-middle">
 																<div class="overflow-hidden">
 																		<table class="min-w-full divide-y divide-gray-200">
 																				<thead>
 																						<tr>
-																								<th scope="col" class="px-6 py-3 text-start text-xs font-medium uppercase text-gray-500">
-																										ID
-																								</th>
 																								<th scope="col" class="px-6 py-3 text-start text-xs font-medium uppercase text-gray-500">
 																										Seat Location
 																								</th>
@@ -44,9 +39,6 @@
 																				<tbody class="divide-y divide-gray-200">
 																						@foreach ($officeLayouts as $item)
 																								<tr>
-																										<td class="text-wrap whitespace-nowrap px-6 py-4 text-sm text-gray-800">
-																												{{ $item->id }}
-																										</td>
 																										<td class="text-wrap whitespace-nowrap px-6 py-4 text-sm text-gray-800">
 																												{{ $item->location }}
 																										</td>

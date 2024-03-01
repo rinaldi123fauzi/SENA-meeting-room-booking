@@ -39,6 +39,8 @@ Route::middleware([
     Route::post('/book-a-room/select-time', [BookingController::class, 'selectTime'])->name('bookings.select-time');
     Route::post('/book-a-room/book', [BookingController::class, 'bookRoom'])->name('bookings.book');
     Route::post('/book-a-room/{id}/confirmation', [BookingController::class, 'bookConfirmation'])->name('bookings.confirmation');
+    Route::get('/book-a-room/meeting/confirm', [BookingController::class, 'meetingConfirmation'])->name('bookings.meeting-confirm');
+    Route::put('/book-a-room/meeting/confirm/{id}', [BookingController::class, 'userCancelBooking'])->name('bookings.user-cancel');
 
     Route::get('/office-layouts', [OfficeLayoutController::class, 'index'])->name('office-layouts.index');
     Route::get('/office-layouts/{id}/details', [OfficeLayoutController::class, 'showUsers'])->name('office-layouts.show-users');

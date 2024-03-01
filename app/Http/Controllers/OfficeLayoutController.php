@@ -83,8 +83,8 @@ class OfficeLayoutController extends Controller
     // USER 
     public function showUsers($id)
     {
-        $maps = Map::with('building')->where('id', $id)->get();
+        $map = Map::with('building')->where('id', $id)->first();
         $officeLayouts = OfficeLayout::with('office_map')->where('map_id', $id)->get();
-        return view('pages.office-layout.show', compact('maps', 'officeLayouts'));
+        return view('pages.office-layout.show', compact('map', 'officeLayouts'));
     }
 }

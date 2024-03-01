@@ -1,7 +1,7 @@
 <x-app-layout>
 		<x-slot name="header">
-				<h2 class="text-xl font-semibold leading-tight text-gray-800">
-						{{ __('Add user seat') }}
+				<h2 class="text-base font-semibold leading-tight text-gray-800 lg:text-xl">
+						<a href="{{ route('admin') }}">Admin panel &rsaquo;</a> {{ __('Add user seat') }}
 				</h2>
 		</x-slot>
 
@@ -27,7 +27,7 @@
 								<img src="{{ Storage::url($map->image_url) }}" alt="">
 								<form action="{{ route('office-layouts.seat.store') }}" method="post">
 										@csrf
-										<div class="mx-auto my-3 flex w-11/12 flex-col">
+										<div class="mx-auto my-3 hidden w-11/12 flex-col">
 												<label for="map_id">Map name</label>
 												<input type="text" name="map_id" id="map_id" placeholder=""
 														class="my-1 rounded-md read-only:border-0 read-only:bg-slate-200 read-only:ring-0"
