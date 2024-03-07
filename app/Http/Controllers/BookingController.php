@@ -111,7 +111,7 @@ class BookingController extends Controller
         $booking->update([
             'status' => 'CANCELED'
         ]);
-        return redirect()->route('admin');
+        return redirect()->route('meeting-list');
     }
 
     public function userCancelBooking($id)
@@ -123,13 +123,11 @@ class BookingController extends Controller
         return redirect()->route('dashboard');
     }
 
-    
-
     public function meetingConfirmation() 
     {
         $now = Carbon::now();
         $meetings = Booking::where('status', 'BOOKED')->where('start_time', '>=', $now)->get();
-        
+
         return view('pages.room-booking.meeting-confirm', compact('meetings'));
     }
 }

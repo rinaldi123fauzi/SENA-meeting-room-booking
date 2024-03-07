@@ -22,8 +22,17 @@
 												{{ __('Office layouts') }}
 										</x-nav-link>
 										@if (Auth::user()->role_id == '1')
-												<x-nav-link href="{{ route('admin') }}" :active="request()->routeIs('admin')">
-														{{ __('Administrator') }}
+												<x-nav-link href="{{ route('meeting-list') }}" :active="request()->routeIs('meeting-list')">
+														{{ __('Meeting list') }}
+												</x-nav-link>
+												<x-nav-link href="{{ route('meeting-room-list') }}" :active="request()->routeIs('meeting-room-list')">
+														{{ __('Meeting room list') }}
+												</x-nav-link>
+												<x-nav-link href="{{ route('office-layout-list') }}" :active="request()->routeIs('office-layout-list')">
+														{{ __('Office layout list') }}
+												</x-nav-link>
+												<x-nav-link href="{{ route('users-list') }}" :active="request()->routeIs('users-list')">
+														{{ __('Users') }}
 												</x-nav-link>
 										@endif
 								</div>
@@ -165,8 +174,17 @@
 								{{ __('Office layouts') }}
 						</x-responsive-nav-link>
 						@if (Auth::user()->role_id == 1)
-								<x-responsive-nav-link href="{{ route('admin') }}" :active="request()->routeIs('admin')">
-										{{ __('Administrator') }}
+								<x-responsive-nav-link href="{{ route('meeting-list') }}" :active="request()->routeIs('meeting-list')">
+										{{ __('Meeting list') }}
+								</x-responsive-nav-link>
+								<x-responsive-nav-link href="{{ route('meeting-room-list') }}" :active="request()->routeIs('meeting-room-list')">
+										{{ __('Meeting room list') }}
+								</x-responsive-nav-link>
+								<x-responsive-nav-link href="{{ route('office-layout-list') }}" :active="request()->routeIs('office-layout-list')">
+										{{ __('Office layout list') }}
+								</x-responsive-nav-link>
+								<x-responsive-nav-link href="{{ route('users-list') }}" :active="request()->routeIs('users-list')">
+										{{ __('Users') }}
 								</x-responsive-nav-link>
 						@endif
 				</div>

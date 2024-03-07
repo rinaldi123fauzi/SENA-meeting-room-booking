@@ -11,23 +11,23 @@
 								<div class="flex flex-col lg:flex-row">
 										<div class="m-5">
 												<div>
-														<h3 class="mb-3 text-base font-semibold text-gray-800 lg:text-xl">Meeting Summary - This
-																week</h3>
+														<h3 class="mb-3 text-base font-semibold text-gray-800 lg:text-xl">Overall Meeting Summary</h3>
 														<div>
 																<div class="my-3 grid w-full grid-cols-2 justify-between gap-3">
 																		<div class="flex flex-col items-center gap-3 rounded-lg bg-gray-50 p-4 shadow-sm lg:flex-row">
 																				<div class="rounded-full bg-green-200 p-3">
-																						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-																								stroke="green" class="h-6 w-6 lg:h-8 lg:w-8">
-																								<path stroke-linecap="round" stroke-linejoin="round"
-																										d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+																						<svg xmlns="http://www.w3.org/2000/svg" fill="green" viewBox="0 0 512 512" stroke="green"
+																								class="h-6 w-6 lg:h-8 lg:w-8">
+																								<path
+																										d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z" />
 																						</svg>
+
 																				</div>
 																				<div class="text-gray-800">
-																						<p class="text-center text-base font-semibold lg:text-start">Meeting Scheduled</p>
+																						<p class="text-center text-base font-semibold lg:text-start">Average meeting duration</p>
 																						<div class="flex items-center justify-center gap-x-2 lg:justify-start">
-																								<p class="text-2xl font-bold lg:text-3xl">{{ $booked }}</p>
-																								<p class="text-base font-normal lg:text-center lg:font-normal"> this week</p>
+																								<p class="text-2xl font-bold lg:text-3xl">{{ round($averageMeetingDuration, 2) }}</p>
+																								<p class="text-base font-normal lg:text-center lg:font-normal"> hours</p>
 																						</div>
 																				</div>
 																		</div>
@@ -51,15 +51,15 @@
 																<div class="my-3 grid w-full grid-cols-3 justify-between gap-3">
 																		<div class="flex items-center gap-x-3 rounded-lg bg-gray-50 p-4 shadow-sm">
 																				<div class="text-gray-800">
-																						<p class="font-lg:semibold text-base">Total building</p>
+																						<p class="text-base font-semibold">Total meeting rooms</p>
 																						<div class="flex items-center gap-x-2">
-																								<p class="text-3xl font-bold">{{ $buildingCount }}</p>
+																								<p class="text-3xl font-bold">{{ $roomCounts }}</p>
 																						</div>
 																				</div>
 																		</div>
 																		<div class="flex items-center gap-x-3 rounded-lg bg-gray-50 p-4 shadow-sm">
 																				<div class="text-gray-800">
-																						<p class="text-base font-semibold">Total capacity</p>
+																						<p class="text-base font-semibold">Total office capacity</p>
 																						<div class="flex items-center gap-x-2">
 																								<p class="text-3xl font-bold">{{ $capacity }}</p>
 																						</div>

@@ -31,7 +31,7 @@ class BuildingController extends Controller
     {
         $data = $request->all();
         Building::create($data);
-        return redirect()->route('admin');
+        return redirect()->route('meeting-room-list');
     }
 
     /**
@@ -59,7 +59,7 @@ class BuildingController extends Controller
         $data = $request->all();
         $building = Building::findOrFail($id);
         $building->update($data);
-        return redirect()->route('admin');
+        return redirect()->route('meeting-room-list');
     }
 
     /**
@@ -68,6 +68,6 @@ class BuildingController extends Controller
     public function destroy(Building $building)
     {
         $building->delete();
-        return redirect()->route('admin');
+        return redirect()->route('meeting-room-list');
     }
 }

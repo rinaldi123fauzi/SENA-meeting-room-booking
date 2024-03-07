@@ -29,7 +29,10 @@ Route::middleware([
 ])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::get('/admin', [AdminController::class, 'index'])->middleware('isAdmin')->name('admin');
+    Route::get('/meeting-list', [AdminController::class, 'meetingList'])->middleware('isAdmin')->name('meeting-list');
+    Route::get('/meeting-room-list', [AdminController::class, 'meetingRoomList'])->middleware('isAdmin')->name('meeting-room-list');
+    Route::get('/office-layout-list', [AdminController::class, 'officeLayoutList'])->middleware('isAdmin')->name('office-layout-list');
+    Route::get('/users', [AdminController::class, 'usersList'])->middleware('isAdmin')->name('users-list');
 
     Route::get('/register', function() {    
         return redirect()->route('login');

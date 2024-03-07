@@ -42,7 +42,7 @@ class MapController extends Controller
 
         session()->flash('success', 'Map upload successfully');
 
-        return redirect()->route('admin');
+        return redirect()->route('office-layout-list');
     }
 
     /**

@@ -27,7 +27,7 @@ class UserController extends Controller
         $role = Role::findOrFail($id);
         $data['name'] = Str::upper($data['name']);
         $role->update($data);
-        return redirect()->route('admin');
+        return redirect()->route('users-list');
     }
 
     public function showUsersRoles($roles)
@@ -41,7 +41,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->delete();
-        return redirect()->route('admin');
+        return redirect()->route('users-list');
     }
 
     public function createRoles()
@@ -54,7 +54,7 @@ class UserController extends Controller
         $data = $request->all();
         $data['name'] = Str::upper($data['name']);
         $user = Role::create($data);
-        return redirect()->route('admin');
+        return redirect()->route('users-list');
     }
 
     public function editUserRoles($id) 
@@ -69,7 +69,7 @@ class UserController extends Controller
         $data = $request->all();
         $user = User::findOrFail($id);
         $user->update($data);
-        return redirect()->route('admin');
+        return redirect()->route('users-list');
     }
 
     public function deleteRoles($id)
@@ -77,6 +77,6 @@ class UserController extends Controller
         $role = Role::findOrFail($id);
         User::where('role_id', $id)->update(['role_id' => 2]);
         $role->delete();
-        return redirect()->route('admin');
+        return redirect()->route('users-list');
     }
 }

@@ -1,7 +1,7 @@
 <x-app-layout>
 		<x-slot name="header">
 				<h2 class="text-base font-semibold leading-tight text-gray-800 lg:text-xl">
-						<a href="{{ route('admin') }}">Admin panel &rsaquo;</a> {{ __('Add user seat') }}
+						<a href="{{ route('office-layout-list') }}">Office layout list &rsaquo;</a> {{ __('Add user seat') }}
 				</h2>
 		</x-slot>
 

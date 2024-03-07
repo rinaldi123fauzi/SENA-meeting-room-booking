@@ -70,6 +70,7 @@
 														</div>
 												</div>
 										@empty
+												<div class="col-span-2">No meeting found.</div>
 										@endforelse
 								</div>
 						</div>

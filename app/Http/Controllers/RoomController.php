@@ -33,7 +33,7 @@ class RoomController extends Controller
     {
         $data = $request->all();
         Room::create($data);
-        return redirect()->route('admin');
+        return redirect()->route('meeting-room-list');
     }
 
     /**
@@ -62,7 +62,7 @@ class RoomController extends Controller
         $data = $request->all();
         $room = Room::findOrFail($id);
         $room->update($data);
-        return redirect()->route('admin');
+        return redirect()->route('meeting-room-list');
     }
 
     /**
@@ -72,6 +72,6 @@ class RoomController extends Controller
     {
         $room = Room::findOrFail($id);
         $room->delete();
-        return redirect()->route('admin');
+        return redirect()->route('meeting-room-list');
     }
 }
