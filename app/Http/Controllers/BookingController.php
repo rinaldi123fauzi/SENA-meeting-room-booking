@@ -21,24 +21,62 @@ class BookingController extends Controller
         $data = $request->all();
         $startTime = Carbon::parse($data['start_time']);
         $endTime = Carbon::parse($data['end_time']);
-        $rooms = Room::with('bookings')->get();
+        $rooms = Room::all();
         $availableRooms = [];
-        $unavailableRooms = [];
+        $occupiedRooms = [];
 
         foreach ($rooms as $room) {
-            $booking = Booking::where('room_id', $room->id)
+            $bookings = Booking::with('room')->where('room_id', $room->id)
+                ->where('status', 'BOOKED')
                 ->where(function ($query) use ($startTime, $endTime) {
-                    $query->whereBetween('start_time', [$startTime, $endTime])
-                        ->orWhereBetween('end_time', [$startTime, $endTime]);
-                })
-                ->first();
+                            $query->where(function ($query) use ($startTime) {
+                                $query->where('start_time', '<=', $startTime)
+                                    ->where('end_time', '>', $startTime);
+                            })->orWhere(function ($query) use ($endTime) {
+                                            $query->where('start_time', '<', $endTime)
+                                                ->where('end_time', '>=', $endTime);
+                                        })->orWhere(function ($query) use ($startTime, $endTime) {
+                                            $query->where('start_time', '>=', $startTime)
+                                                ->where('end_time', '<=', $endTime);
+                                        });
+                        })->get();
 
-            if (!$booking) {
+            if ($bookings->isEmpty()) {
                 $availableRooms[] = $room;
             } else {
+                $occupiedRooms[] = $bookings;
+            }
+
+            // $bookings = Booking::with('room')->where('room_id', $room->id)
+            //     ->where('status', 'BOOKED')
+            //     ->where(function ($query) use ($startTime, $endTime) {
+            //         $query->where(function ($query) use ($startTime) {
+            //             $query->where('start_time', '<=', $startTime)
+            //                 ->where('end_time', '>', $startTime);
+            //         })->orWhere(function ($query) use ($endTime) {
+            //             $query->where('start_time', '<', $endTime)
+            //                 ->where('end_time', '>=', $endTime);
+            //         })->orWhere(function ($query) use ($startTime, $endTime) {
+            //             $query->where('start_time', '>=', $startTime)
+            //                 ->where('end_time', '<=', $endTime);
+            //         });
+            //     })->get();
+
+            // if ($bookings->isEmpty()) {
+            //     $availableRooms[] = $room;
+            // } else {
+            //     $occupiedRooms[] = $room;
+            // }
+        }
+
+        $unavailableRooms = [];
+
+        foreach ($occupiedRooms as $rooms) {
+            foreach($rooms as $room) {
                 $unavailableRooms[] = $room;
             }
         }
+
 
         return view('pages.room-booking.select-room', compact('availableRooms', 'unavailableRooms', 'startTime', 'endTime'));
     }

@@ -35,22 +35,37 @@
 										<h3 class="mb-3 mt-10 text-xl font-semibold text-gray-800">Unavailable rooms</h3>
 										<div class="grid grid-cols-2 gap-3 lg:grid-cols-3">
 												@foreach ($unavailableRooms as $unavailableRoom)
-														@foreach ($unavailableRoom->bookings as $booking)
-																<div class="flex w-full flex-col gap-3 rounded-md border border-red-500 p-5">
-																		<h5 class="text-lg font-semibold">{{ $unavailableRoom->name }}</h5>
-																		<div class="border-b border-red-500 pb-3">
-																				<p class="text-base font-normal text-gray-600">Gedung Depan</p>
-																				<p class="text-base font-normal text-gray-600">Capacity : {{ $unavailableRoom->capacity }}</p>
+														{{-- @foreach ($unavailableRoom->room as $room) --}}
+														<div class="flex w-full flex-col gap-3 rounded-md border border-red-500 p-5">
+																<h5 class="text-lg font-semibold">{{ $unavailableRoom->room->name }}</h5>
+																<div class="border-b border-red-500 pb-3">
+																		<p class="text-base font-normal text-gray-600">Gedung Depan</p>
+																		<p class="text-base font-normal text-gray-600">Capacity : {{ $unavailableRoom->room->capacity }}</p>
+																</div>
+																<div class="flex flex-col items-start gap-1 pt-1">
+																		<div class="flex items-center gap-3">
+																				<div>
+																						<p class="rounded-full bg-red-200 px-4 py-0.5 text-red-800">Booked</p>
+																				</div>
+																				<div>
+																						<p>From <span
+																										class="font-semibold">{{ \Carbon\Carbon::parse($unavailableRoom->start_time)->format('H:i') }}</span>
+																								-
+																								<span
+																										class="font-semibold">{{ \Carbon\Carbon::parse($unavailableRoom->end_time)->format('H:i') }}</span>
+																						</p>
+																				</div>
 																		</div>
-																		<div class="flex flex-col items-start gap-1 pt-1">
-																				<p class="rounded-full bg-red-200 px-4 py-0.5 text-red-800">Booked</p>
-																				<p>From <span
-																								class="font-semibold">{{ \Carbon\Carbon::parse($booking->start_time)->format('H:i') }}</span> -
-																						<span class="font-semibold">{{ \Carbon\Carbon::parse($booking->end_time)->format('H:i') }}</span>
-																				</p>
+																		<div class="flex flex-col gap-1">
+																				<p class="mt-3 font-normal leading-tight text-gray-600">Booked by:</p>
+																				<div class="flex items-center gap-2">
+																						<img src="https://i.pravatar.cc/300" class="h-8 w-8 rounded-full" alt="">
+																						<p class="font-semibold text-gray-600">{{ $unavailableRoom->booked_by }}</p>
+																				</div>
 																		</div>
 																</div>
-														@endforeach
+														</div>
+														{{-- @endforeach --}}
 												@endforeach
 										</div>
 								@endif
