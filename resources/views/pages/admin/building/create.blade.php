@@ -32,6 +32,11 @@
 														class="my-1 rounded-md">
 										</div>
 										<div class="mx-auto my-3 flex w-11/12 flex-col">
+												<label for="capacity">Building capacity</label>
+												<input type="text" name="capacity" id="capacity" placeholder="Enter buiding capacity"
+														class="my-1 rounded-md">
+										</div>
+										<div class="mx-auto my-3 flex w-11/12 flex-col">
 												<label for="address">Address</label>
 												<input type="text" name="address" id="address" placeholder="Enter buiding address"
 														class="my-1 rounded-md">

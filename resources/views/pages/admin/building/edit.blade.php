@@ -33,6 +33,11 @@
 														value="{{ $building->name }}">
 										</div>
 										<div class="mx-auto my-3 flex w-11/12 flex-col">
+												<label for="capacity">Building capacity</label>
+												<input type="text" name="capacity" id="capacity" placeholder="Enter buiding capacity"
+														class="my-1 rounded-md" value="{{ $building->capacity }}">
+										</div>
+										<div class="mx-auto my-3 flex w-11/12 flex-col">
 												<label for="name">Address</label>
 												<input type="text" name="address" id="address" placeholder="Enter buiding address"
 														class="my-1 rounded-md" value="{{ $building->address }}">
